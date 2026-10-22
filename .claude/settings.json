@@ -1,4 +1,11 @@
 {
-    "outputStyle": "Explanatory"
-}
+    "permissions": {
+      "allow": [
+        "Bash"
+      ],
+        "deny":[],
+        "ask":[]
+    },
+    "outputStyle": "Beginner Friendly"
+  }
   
