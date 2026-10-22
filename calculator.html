@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .calculator {
+            background: #1a1f3a;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 20px 60px rgba(202, 255, 0, 0.1);
+            border: 2px solid rgba(202, 255, 0, 0.3);
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .display {
+            background: #0a0e27;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: right;
+            border: 1px solid rgba(202, 255, 0, 0.2);
+        }
+
+        .display input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: #CAFF00;
+            font-size: 2.5em;
+            font-weight: bold;
+            outline: none;
+            text-align: right;
+            font-family: 'Courier New', monospace;
+        }
+
+        .display input::placeholder {
+            color: rgba(202, 255, 0, 0.3);
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            padding: 15px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .number {
+            background: #2a2f4a;
+            color: #CAFF00;
+            border: 1px solid rgba(202, 255, 0, 0.2);
+        }
+
+        .number:hover {
+            background: #3a3f5a;
+            border-color: rgba(202, 255, 0, 0.5);
+            box-shadow: 0 0 15px rgba(202, 255, 0, 0.2);
+        }
+
+        .number:active {
+            transform: scale(0.95);
+        }
+
+        .operator {
+            background: #CAFF00;
+            color: #1a1f3a;
+            border: none;
+        }
+
+        .operator:hover {
+            box-shadow: 0 0 20px rgba(202, 255, 0, 0.6);
+            transform: scale(1.05);
+        }
+
+        .operator:active {
+            transform: scale(0.95);
+        }
+
+        .equals {
+            background: #CAFF00;
+            color: #1a1f3a;
+            grid-column: span 2;
+            border: none;
+            font-weight: bold;
+        }
+
+        .equals:hover {
+            box-shadow: 0 0 25px rgba(202, 255, 0, 0.8);
+            transform: scale(1.05);
+        }
+
+        .equals:active {
+            transform: scale(0.95);
+        }
+
+        .clear {
+            background: #d32f2f;
+            color: white;
+            grid-column: span 2;
+            border: none;
+        }
+
+        .clear:hover {
+            background: #f44336;
+            box-shadow: 0 0 20px rgba(244, 67, 54, 0.4);
+        }
+
+        .clear:active {
+            transform: scale(0.95);
+        }
+
+        .decimal {
+            background: #2a2f4a;
+            color: #CAFF00;
+            border: 1px solid rgba(202, 255, 0, 0.2);
+        }
+
+        .decimal:hover {
+            background: #3a3f5a;
+            border-color: rgba(202, 255, 0, 0.5);
+            box-shadow: 0 0 15px rgba(202, 255, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="display">
+            <input type="text" id="display" placeholder="0" readonly>
+        </div>
+        <div class="buttons">
+            <button class="clear" onclick="clearDisplay()">C</button>
+            <button class="clear" onclick="deleteLast()">⌫</button>
+            <button class="operator" onclick="appendOperator('/')">÷</button>
+            <button class="operator" onclick="appendOperator('*')">×</button>
+
+            <button class="number" onclick="appendNumber('7')">7</button>
+            <button class="number" onclick="appendNumber('8')">8</button>
+            <button class="number" onclick="appendNumber('9')">9</button>
+            <button class="operator" onclick="appendOperator('-')">−</button>
+
+            <button class="number" onclick="appendNumber('4')">4</button>
+            <button class="number" onclick="appendNumber('5')">5</button>
+            <button class="number" onclick="appendNumber('6')">6</button>
+            <button class="operator" onclick="appendOperator('+')">+</button>
+
+            <button class="number" onclick="appendNumber('1')">1</button>
+            <button class="number" onclick="appendNumber('2')">2</button>
+            <button class="number" onclick="appendNumber('3')">3</button>
+            <button class="decimal" onclick="appendNumber('.')">.</button>
+
+            <button class="number" onclick="appendNumber('0')">0</button>
+            <button class="equals" onclick="calculate()">=</button>
+        </div>
+    </div>
+
+    <script>
+        let display = document.getElementById('display');
+        let currentInput = '';
+        let previousInput = '';
+        let operator = null;
+
+        function appendNumber(num) {
+            // TODO(human): 숫자 입력 로직 구현
+            // 소수점 중복 방지 및 0 앞의 0 방지 고려
+        }
+
+        function appendOperator(op) {
+            // TODO(human): 연산자 처리 로직 구현
+            // 이전 계산이 있으면 실행하고 새 연산자 설정
+        }
+
+        function calculate() {
+            // TODO(human): 계산 실행 로직 구현
+            // 현재 연산자를 기반으로 계산 수행
+        }
+
+        function clearDisplay() {
+            currentInput = '';
+            previousInput = '';
+            operator = null;
+            display.value = '0';
+        }
+
+        function deleteLast() {
+            currentInput = currentInput.toString().slice(0, -1);
+            display.value = currentInput || '0';
+        }
+    </script>
+</body>
+</html>

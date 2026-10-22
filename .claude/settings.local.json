@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash([ -f \"E:\\\\\\\\claude_code\\\\\\\\workspaces\\\\\\\\claude-code-mastery\\\\\\\\.mcp.json\" ])",
+      "Bash(cat \"E:\\\\\\\\claude_code\\\\\\\\workspaces\\\\\\\\claude-code-mastery\\\\\\\\.mcp.json\")",
+      "PowerShell(ConvertTo-Json *)",
+      "PowerShell($json = Get-Content ~/.claude.json | ConvertFrom-Json; $projectKey = \"E:/claude_code/workspaces/claude-code-mastery\"; if \\($json.projects.$projectKey\\) { $json.projects.$projectKey.mcpServers | ConvertTo-Json } else { Write-Output \"No project entry\" })",
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell(Get-ChildItem ~/.claude/skills/synced -Directory | ForEach-Object { $skillPath = $_.FullName; Get-ChildItem $skillPath -Filter \"SKILL.md\" -Recurse | ForEach-Object { Write-Output \\(\"`n\" + $skillPath.Split\\('\\\\'\\)[-1] + \":`n\" + \\(Get-Content $_.FullName | Select-Object -First 10\\)\\) } })",
+      "Bash(npm view *)",
+      "PowerShell($json = Get-Content ~/.claude/settings.json | ConvertFrom-Json; if \\($json.permissions\\) { $json.permissions | ConvertTo-Json } else { Write-Output \"No permissions section\" })",
+      "PowerShell($profile = $env:USERPROFILE; @\\($profile + '\\\\.claude\\\\settings.json', $profile + '\\\\.claude.json', $profile + '\\\\.claude\\\\CLAUDE.md'\\) | ForEach-Object { if \\(Test-Path $_\\) { Write-Host \"Found: $_\" } })",
+      "PowerShell(@\\('.claude\\\\settings.json', '.claude\\\\settings.local.json', '.claude\\\\CLAUDE.md', 'CLAUDE.md', 'CLAUDE.local.md', '.mcp.json'\\) | ForEach-Object { if \\(Test-Path $_\\) { Write-Host \"Found: $_\" } })",
+      "PowerShell(claude *)",
+      "Bash(ls -1 \"E:\\\\\\\\claude_code\\\\\\\\workspaces\\\\\\\\claude-code-mastery\\\\\\\\.claude\\\\\\\\\")"
+    ]
+  },
+  "outputStyle": "Beginner Friendly"
+}
